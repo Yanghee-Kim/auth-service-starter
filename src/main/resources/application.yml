@@ -35,6 +35,10 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
 
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expire-ms: 1800000  # 30분
+
 #logging:
 #  level:
 #    org.springframework.security: DEBUG
