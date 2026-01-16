@@ -34,9 +34,5 @@ public class User {
     public static User createOAuthUser(String provider, String providerId, String nickname) {
         return new User(provider, providerId, nickname);
     }
-
-    public void updateNickname(String nickname) {
-        this.nickname = nickname;
-    }
 }
 

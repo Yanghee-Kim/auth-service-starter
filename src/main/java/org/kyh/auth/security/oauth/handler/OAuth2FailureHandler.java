@@ -1,4 +1,4 @@
-package org.kyh.auth.security.handler;
+package org.kyh.auth.security.oauth.handler;
 
 
 import java.io.IOException;
@@ -20,6 +20,7 @@ public class OAuth2FailureHandler implements AuthenticationFailureHandler {
             HttpServletResponse response,
             AuthenticationException exception
     ) throws IOException {
+
         log.error("OAuth2 LOGIN FAILED >>> {}", exception.getMessage(), exception);
 
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
