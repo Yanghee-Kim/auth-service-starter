@@ -5,6 +5,9 @@ on:
   push:
     branches: ["main"]
 
+env:
+  IMAGE_NAME: ghcr.io/yanghee-kim/auth-service-starter
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
