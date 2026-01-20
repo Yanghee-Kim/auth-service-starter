@@ -5,6 +5,7 @@ on:
   push:
     branches: ["main"]
 
+# GHCR은 무조건 소문자여야 함
 env:
   IMAGE_NAME: ghcr.io/yanghee-kim/auth-service-starter
 
@@ -23,6 +24,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # main push일 때만 GHCR 로그인
       - name: Login to GHCR
         if: github.event_name == 'push'
         uses: docker/login-action@v3
@@ -31,6 +33,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # PR 단계: 빌드만 (push X)
       - name: Build (PR) - no push
         if: github.event_name == 'pull_request'
         uses: docker/build-push-action@v6
@@ -38,10 +41,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
-          tags: ghcr.io/${{ github.repository_owner }}/auth-service-starter:pr-${{ github.event.pull_request.number }}
+          tags: ${{ env.IMAGE_NAME }}:pr-${{ github.event.pull_request.number }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      # main 단계: 빌드 + GHCR push
       - name: Build & Push (main)
         if: github.event_name == 'push'
         uses: docker/build-push-action@v6
@@ -50,7 +54,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/auth-service-starter:${{ github.sha }}
-            ghcr.io/${{ github.repository_owner }}/auth-service-starter:latest
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
