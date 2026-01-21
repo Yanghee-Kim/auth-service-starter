@@ -58,3 +58,9 @@ jobs:
             ${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      # Jenkins CD 트리거
+      - name: Trigger Jenkins CD
+        if: github.event_name == 'push'
+        run: |
+          curl -X POST "http://54.116.58.222:8081/job/cd-auth-service-starter/build?token=deploy-auth-service"
