@@ -48,8 +48,8 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         String refreshToken = UUID.randomUUID().toString();
 
         // Redis 저장 (예: 7일)
-//        Duration refreshTtl = Duration.ofDays(7);
-        Duration refreshTtl = Duration.ofMinutes(2);
+        Duration refreshTtl = Duration.ofDays(7);
+//        Duration refreshTtl = Duration.ofMinutes(2);
         refreshTokenService.save(refreshToken, userId, refreshTtl);
 
         // HttpOnly Cookie 세팅
