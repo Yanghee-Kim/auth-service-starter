@@ -63,4 +63,4 @@ jobs:
       - name: Trigger Jenkins CD
         if: github.event_name == 'push'
         run: |
-          curl -X POST "http://54.116.58.222:8080/job/cd-auth-service-starter/build?token=deploy-auth-service"
+          curl -X POST "http://54.116.58.222:8081/job/cd-auth-service-starter/build?token=deploy-auth-service"
