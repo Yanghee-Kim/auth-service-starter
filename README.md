@@ -48,7 +48,7 @@
 - CI: GitHub Actions
   - Docker 이미지 빌드
   - main 브랜치 기준 GHCR 이미지 push
-- CD: Jenkins
+- CD: Jenkins (http://54.116.58.222:8081)
   - GHCR 이미지 pull
   - 컨테이너 재기동을 통한 배포
 
