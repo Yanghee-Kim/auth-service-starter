@@ -1,11 +1,11 @@
 spring:
   data:
     redis:
-      host: localhost
+      host: redis
       port: 6379
 
   datasource:
-    url: jdbc:mysql://localhost:3307/appdb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://mysql:3306/appdb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: app
     password: app1234
     driver-class-name: com.mysql.cj.jdbc.Driver
