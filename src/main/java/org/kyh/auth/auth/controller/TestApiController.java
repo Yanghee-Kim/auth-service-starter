@@ -16,4 +16,9 @@ public class TestApiController {
                 "authorities", authentication.getAuthorities()  // ROLE_USER
         );
     }
+
+    @GetMapping("/api/test")
+    public String test() {
+        return "success";
+    }
 }
