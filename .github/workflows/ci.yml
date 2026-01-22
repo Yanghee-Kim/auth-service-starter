@@ -65,4 +65,4 @@ jobs:
         run: |
           curl -X POST \
             -u "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
-            "http://54.116.58.222:8081/job/cd-auth-service-starter/build?token=deploy-auth-service"
+            "http://54.116.58.222:8081/job/cd-auth-service-starter/build"
